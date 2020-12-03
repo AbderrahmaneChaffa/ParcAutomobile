@@ -1,0 +1,51 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-buttons slot="secondary">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title">Bonjour Mr  {{nom}} {{prenom}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button >
+        <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content  style="--background:#7266be">
+<ion-card style="--background:#7266be">
+  
+  <br/>
+  <img src="assets/management.png"  >
+  <br/>
+  <ion-item (click)="voitures()" style="--background:#cac6e6">
+    <ion-icon name="car" slot="start"></ion-icon>
+    <ion-label>Les voitures</ion-label>
+  </ion-item>
+  <br/>
+  <br/>
+  <ion-item  (click)="chauffeurs()" style="--background:#cac6e6">
+    <ion-icon name="people" slot="start"></ion-icon>
+    <ion-label>Les chauffeurs</ion-label>
+  </ion-item>
+  <br/>
+  <br/>
+  <ion-item  (click)="missions()" style="--background:#cac6e6">
+    <ion-icon name="trail-sign" slot="start"></ion-icon>
+    <ion-label>Les missions</ion-label>
+  </ion-item>
+  <br/>
+  <br/>
+  <ion-item  (click)="maintenance()" style="--background:#cac6e6">
+    <ion-icon name="construct" slot="start"></ion-icon>
+    <ion-label>Maintenance</ion-label>
+  </ion-item>
+  <br/>
+  <br/>
+  <ion-item  (click)="feedback()" style="--background:#cac6e6">
+    <ion-icon name="chatbox-ellipses" slot="start"></ion-icon>
+    <ion-label>FeedBack</ion-label>
+  </ion-item>
+</ion-card>
+</ion-content>

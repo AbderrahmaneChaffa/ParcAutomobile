@@ -1,0 +1,209 @@
+<ion-header>
+
+  <ion-toolbar style="--background:#cac6e6">
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons><!--ion-icon class="caricon" name="car" slot="end"></ion-icon-->
+    <ion-title>Voitures</ion-title>
+  </ion-toolbar>
+  
+    
+   
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="ajoutervoitures()">
+      <ion-icon name="add" ></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
+<ion-segment color="primary" [(ngModel)]="yudsegment">
+  <ion-segment-button value="libre" >
+      Libre
+  </ion-segment-button>
+  <ion-segment-button value="mission" checked>
+      Occupée
+  </ion-segment-button>
+  <ion-segment-button value="panne">
+    En panne
+  </ion-segment-button>
+</ion-segment>
+
+<div [ngSwitch]="yudsegment">
+  <div  *ngSwitchCase="'libre'">
+
+    <ion-item slot="fixed" class="a">
+      <h6 style="text-align:center" >Modifier une voiture :</h6>
+      <ion-label position="floating" >etat :</ion-label>
+      <ion-select interface="popover" [(ngModel)]="etat" >
+        <ion-select-option value="Libre">Libre</ion-select-option>
+        <ion-select-option value="Occupee">Occupee</ion-select-option>
+        <ion-select-option value="En panne">En panne</ion-select-option>
+      </ion-select>
+        <ion-label position="floating">Kilometrage</ion-label>
+        <ion-input [(ngModel)]="kilometrage"></ion-input>
+        <ion-label position="floating">Couleur</ion-label>
+        <ion-input [(ngModel)]="couleur"></ion-input>
+        <ion-label position="floating">Immatriculation</ion-label>
+        <ion-input [(ngModel)]="immatriculation"></ion-input>
+
+           <div style="color:red" *ngIf="error_msg.length!=0">
+             {{error_msg}}
+               </div>
+              <div>
+                  <ion-button (click)="updatelibre()" >Update</ion-button>
+  <!--ion-button (click)="reset()">Reset</ion-button-->
+             </div>
+    </ion-item>
+    <h6 style="text-align:center">Liste des Voitures :</h6>
+<ion-list *ngIf="vehicules_list_libre.length!=0">
+  
+  <ion-item *ngFor="let x of vehicules_list_libre;let index=index">
+   
+      <ion-label>
+        
+          <h2>immatriculation :{{x.immatriculation}}</h2>
+          <p>Type de voiture : {{x.typevoitures}}</p>
+          <p>Marque: {{x.marque}}</p>
+          <p>Model: {{x.model}}</p>
+          <p>N°chassis: {{x.nchassis}} </p>
+          <p>kilometrage: {{x.kilometrage}} Km</p>
+          <p>carburant: {{x.carburant}} / couleur: {{x.couleur}} </p>
+          <p>numbre de place: {{x.nplace}}</p>
+          <p>chauffeur: {{x.chauffeur}}</p>
+          <p>etat: {{x.etat}}</p>
+          
+          <ion-button (click)="edit(x,index)" >
+            <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+        </ion-button>
+  
+        <ion-button (click)="delete_libre(index)" fill="outline" color="grey">
+            <ion-icon color="danger" slot="icon-only" name="close-circle"></ion-icon>
+        </ion-button>
+      </ion-label>
+
+
+      
+
+  </ion-item>
+ 
+</ion-list>
+
+</div>
+
+
+
+
+<div  *ngSwitchCase="'mission'">
+
+  <ion-item slot="fixed" class="a">
+    <h6 style="text-align:center" >Modifier une voiture :</h6>
+    
+      <ion-label position="floating" >etat :</ion-label>
+      <ion-select interface="popover" [(ngModel)]="etat" >
+        <ion-select-option value="Libre">Libre</ion-select-option>
+        <ion-select-option value="Occupee">Occupee</ion-select-option>
+        <ion-select-option value="En panne">En panne</ion-select-option>
+      </ion-select>
+    
+      <ion-label position="floating">Kilometrage</ion-label>
+      <ion-input [(ngModel)]="kilometrage"></ion-input>
+      <ion-label position="floating">Couleur</ion-label>
+      <ion-input [(ngModel)]="couleur"></ion-input>
+      <ion-label position="floating">Immatriculation</ion-label>
+      <ion-input [(ngModel)]="immatriculation"></ion-input>
+
+         <div style="color:red" *ngIf="error_msg.length!=0">
+           {{error_msg}}
+             </div>
+            <div>
+                <ion-button (click)="updatemission()" >Update</ion-button>
+<!--ion-button (click)="reset()">Reset</ion-button-->
+           </div>
+  </ion-item>
+  <h6 style="text-align:center">Liste des Voitures :</h6>
+  <ion-list *ngIf="vehicules_list_mission.length!=0">
+    
+    <ion-item *ngFor="let x of vehicules_list_mission;let index=index">
+   
+        <ion-label>
+            <h2>immatriculation :{{x.immatriculation}}</h2>
+            <p>Type de voiture : {{x.typevoitures}}</p>
+            <p>Marque: {{x.marque}}</p>
+            <p>Model: {{x.model}}</p>
+            <p>N°chassis: {{x.nchassis}} </p>
+            <p>kilometrage: {{x.kilometrage}} Km</p>
+            <p>carburant: {{x.carburant}} / couleur: {{x.couleur}}</p>
+            <p>numbre de place: {{x.nplace}}</p>
+            <p>chauffeur: {{x.chauffeur}}</p>
+            <p>etat: {{x.etat}}</p>
+        </ion-label>
+  
+        <ion-button (click)="edit(x,index)">
+            <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+        </ion-button>
+  
+        <ion-button (click)="delete_mission(index)" fill="outline" color="grey">
+            <ion-icon color="danger" slot="icon-only" name="close-circle"></ion-icon>
+        </ion-button>
+    </ion-item>
+  
+  </ion-list>
+  </div>
+  <div  *ngSwitchCase="'panne'">
+    <ion-item slot="fixed" class="a">
+      <h6 style="text-align:center" >Modifier une voiture :</h6>
+      <ion-label position="floating" >etat :</ion-label>
+      <ion-select interface="popover" [(ngModel)]="etat" >
+        <ion-select-option value="Libre">Libre</ion-select-option>
+        <ion-select-option value="Occupee">Occupee</ion-select-option>
+        <ion-select-option value="En panne">En panne</ion-select-option>
+      </ion-select>
+        <ion-label position="floating">Kilometrage</ion-label>
+        <ion-input [(ngModel)]="kilometrage"></ion-input>
+        <ion-label position="floating">Couleur</ion-label>
+        <ion-input [(ngModel)]="couleur"></ion-input>
+        <ion-label position="floating">Immatriculation</ion-label>
+        <ion-input [(ngModel)]="immatriculation"></ion-input>
+
+           <div style="color:red" *ngIf="error_msg.length!=0">
+             {{error_msg}}
+               </div>
+              <div>
+                  <ion-button (click)="updateEnpanne()" >Update</ion-button>
+  <!--ion-button (click)="reset()">Reset</ion-button-->
+             </div>
+    </ion-item>
+    <h6 style="text-align:center">Liste des Voitures :</h6>
+    <ion-list *ngIf="vehicules_list_panne.length!=0">
+      
+      <ion-item *ngFor="let x of vehicules_list_panne;let index=index">
+     
+          <ion-label>
+              <h2>immatriculation :{{x.immatriculation}}</h2>
+              <p>Type de voiture : {{x.typevoitures}}</p>
+              <p>Marque: {{x.marque}}</p>
+              <p>Model: {{x.model}}</p>
+              <p>N°chassis: {{x.nchassis}} </p>
+              <p>kilometrage: {{x.kilometrage}} Km</p>
+              <p>carburant: {{x.carburant}} / couleur: {{x.couleur}}</p>
+              <p>numbre de place: {{x.nplace}}</p>
+              <p>chauffeur: {{x.chauffeur}}</p>
+              <p>etat: {{x.etat}}</p>
+          </ion-label>
+    
+          <ion-button (click)="edit(x,index)">
+              <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+          </ion-button>
+    
+          <ion-button (click)="delete_panne(index)" fill="outline" color="grey">
+              <ion-icon color="danger" slot="icon-only" name="close-circle"></ion-icon>
+          </ion-button>
+      </ion-item>
+    
+    </ion-list>
+    </div>
+</div>
+</ion-content>

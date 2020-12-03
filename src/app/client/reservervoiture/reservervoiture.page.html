@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar style="--background:#cac6e6">
+    <!--ion-icon class="missionicon" name="trail-sign" slot="start"></ion-icon-->
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <ion-title>Reservation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+  <ion-item class="a">
+    <ion-label>Type de reservation</ion-label>
+    <ion-select interface="popover" [(ngModel)]="typemission" (ionChange)="onChange($event)">
+      <ion-select-option value="0">Choisir une option</ion-select-option>
+      <ion-select-option value="Voiture sans chauffeur">Voiture sans chauffeur</ion-select-option>
+      <ion-select-option value="Voiture avec chauffeur">Voiture avec chauffeur</ion-select-option>
+      <ion-select-option value="Simple">Course simple</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div *ngIf="varShow==1">
+    <ion-item class="a">
+      <ion-label>Date et l'heure de départ</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" (ionChange)="onchangedateDep($event)" value="null" min="2020" [(ngModel)]="dhdepart"></ion-datetime>
+    </ion-item>
+    <ion-item class="a">
+      <ion-label>Date et l'heure du retour</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" (ionChange)="onchangedateArr($event)" value="null" min="2020" [(ngModel)]="dharrivee"></ion-datetime>
+    </ion-item>
+     
+    <!-- Accordéon -->
+    <ion-item class="a">
+      <ion-label (click)="choisirVoiture()">Choisir une Voiture: {{model}} {{marque}}</ion-label>
+    </ion-item>
+    <div *ngIf="varShowVoiture==true">
+      <ion-card *ngFor="let x of vehicules_list;let index=index" style="--background:#aad8f4" (click)="selectionnerVoiture(x,index)" >
+        <ion-card-header>
+          <ion-card-title>Model: {{x.model}} </ion-card-title>
+          <ion-card-subtitle>Marque: {{x.marque}} </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>immatriculation: {{x.immatriculation}}</ion-card-content>
+      </ion-card>
+    </div>
+    <!-- Accordéon  
+    <ion-item class="a">
+      <ion-label>Voiture:</ion-label>
+      <ion-select interface="action-sheet"*ngIf="vehicules_list.length!=0"  [(ngModel)]="voiture"  ionChange="onChangeVoiture($event)">
+        <ion-select-option *ngFor="let x of vehicules_list;let index=index">
+        Marque: {{x.marque}} || Model: {{x.model}} || immatriculation: {{x.immatriculation}}
+           </ion-select-option>
+      </ion-select>
+  </ion-item>-->
+
+
+     <ion-item class="a">
+      <ion-label position="stacked">Notes</ion-label>
+      <ion-textarea [(ngModel)]="notes"></ion-textarea>
+    </ion-item>
+  </div>
+  <div *ngIf="varShow==2">
+    <ion-item class="a">
+      <ion-label>Date et l'heure de départ</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" (ionChange)="onchangedateDep($event)" value="null" min="2020" [(ngModel)]="dhdepart"></ion-datetime>
+    </ion-item>
+    <ion-item class="a">
+      <ion-label>Date et l'heure du retour</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" (ionChange)="onchangedateArr($event)" value="null" min="2020" [(ngModel)]="dharrivee"></ion-datetime>
+    </ion-item>
+     
+    <!-- Accordéon -->
+    <ion-item class="a">
+      <ion-label (click)="choisirVoiture()">Choisir une Voiture: {{model}} {{marque}}</ion-label>
+    </ion-item>
+    <div *ngIf="varShowVoiture==true">
+      <ion-card *ngFor="let x of vehicules_list;let index=index" style="--background:#aad8f4" (click)="selectionnerVoiture(x,index)" >
+        <ion-card-header>
+          <ion-card-title>Model: {{x.model}} </ion-card-title>
+          <ion-card-subtitle>Marque: {{x.marque}} </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>immatriculation: {{x.immatriculation}}</ion-card-content>
+      </ion-card>
+    </div>
+    <!-- Accordéon  
+    <ion-item class="a">
+      <ion-label>Voiture:</ion-label>
+      <ion-select interface="action-sheet"*ngIf="vehicules_list.length!=0"  [(ngModel)]="voiture"  ionChange="onChangeVoiture($event)">
+        <ion-select-option *ngFor="let x of vehicules_list;let index=index">
+        Marque: {{x.marque}} || Model: {{x.model}} || immatriculation: {{x.immatriculation}}
+           </ion-select-option>
+      </ion-select>
+  </ion-item>-->
+
+
+     <ion-item class="a">
+      <ion-label position="stacked">Notes</ion-label>
+      <ion-textarea [(ngModel)]="notes"></ion-textarea>
+    </ion-item>
+  </div>
+  <div *ngIf="this.varShow==3">
+    <ion-item class="a">
+      <ion-input [(ngModel)]="local1" placeholder="Localisation de depart" type="text"></ion-input>
+     </ion-item >
+     <ion-item class="a">
+      <ion-input [(ngModel)]="local2" placeholder="Localisation d'arrivée" type="text"></ion-input>
+     </ion-item >
+
+     <ion-item class="a">
+      <ion-label>Date et l'heure de départ</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" (ionChange)="onchangedateDep($event)" value="null" min="2020" [(ngModel)]="dhdepart"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="a">
+      <ion-label>Bagage :</ion-label>
+      <ion-select interface="popover" [(ngModel)]="bagage" >
+        <ion-select-option value="Avec">Avec</ion-select-option>
+        <ion-select-option value="Sans">Sans</ion-select-option>
+      </ion-select>
+    </ion-item>
+      <ion-item class="a">
+        <ion-label>Estimation par :</ion-label>
+        <ion-select interface="popover" [(ngModel)]="estimation" >
+          <ion-select-option value="Kilometrage">Kilometrage</ion-select-option>
+          <ion-select-option value="Temps">Temps</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item class="a">
+      <ion-label (click)="choisirVoiture()">Choisir une Voiture: {{model}} {{marque}}</ion-label>
+    </ion-item>
+    <div *ngIf="varShowVoiture==true">
+      <ion-card *ngFor="let x of vehicules_list;let index=index" style="--background:#aad8f4" (click)="selectionnerVoiture(x,index)" >
+        <ion-card-header>
+          <ion-card-title>Model: {{x.model}} </ion-card-title>
+          <ion-card-subtitle>Marque: {{x.marque}} </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>immatriculation: {{x.immatriculation}}</ion-card-content>
+      </ion-card>
+    </div>
+     <ion-item class="a">
+      <ion-label position="stacked">Notes</ion-label>
+      <ion-textarea [(ngModel)]="notes"></ion-textarea>
+    </ion-item>
+  </div>
+  
+  
+  
+  
+      
+   <ion-button style="--background:#513862" (click)="ajoutercourse()" expand="block" color="medium">Reserver</ion-button>
+
+        
+      
+
+</ion-content>

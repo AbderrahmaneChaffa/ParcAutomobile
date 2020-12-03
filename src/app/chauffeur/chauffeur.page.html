@@ -1,0 +1,76 @@
+<ion-toolbar style="--background:#f9d342">
+  <ion-buttons slot="start" >
+    <ion-menu-button auto-hide="false"></ion-menu-button>
+  </ion-buttons>
+  <ion-title>Bienvenue Mr {{nom}} {{prenom}}</ion-title>
+</ion-toolbar>
+
+  
+
+<ion-menu side="start" menuId="first" contentId="main" >
+  <ion-header>
+    <ion-toolbar style="--background:#f9d342">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    
+    <ion-list>
+      <ion-item (click)="profil()"><ion-icon  slot="start" name="person"></ion-icon>Profil</ion-item>
+      <ion-item (click)="reparer()"><ion-icon slot="start" name="build"></ion-icon>Ajouter une reparation</ion-item>
+      <ion-item (click)="mescourses()"><ion-icon  slot="start" name="book"></ion-icon>Mes courses</ion-item>
+      <ion-item (click)="feedback()"><ion-icon  slot="start"name="chatbubble-ellipses" ></ion-icon>Feedback</ion-item>
+      <ion-item (click)="aide()"><ion-icon  slot="start" name="help-circle" ></ion-icon>Aide</ion-item>
+      <ion-item (click)="logout()"><ion-icon  slot="start" name="log-out"></ion-icon>Déconnecter</ion-item>
+      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main"></ion-router-outlet>
+
+
+<ion-content [fullscreen]="true" style="--background:#fef9e5" >
+
+  <ion-card style="--background:#8597b3" (click)="mescourses()">
+    <img src="assets/imgadmin/calendar.png" />
+    <ion-card-header style="--background:#d1d8e2" >
+      <ion-card-title>Mes courses</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-label  class="b">Liste des missions en attente : </ion-label>
+  <ion-list *ngIf="missions_list.length!=0" >
+  
+    <ion-item *ngFor="let x of missions_list;let index=index">
+   
+        <ion-label>
+         
+          <h6 >Date et l'heure de depart:</h6>
+            <h6>{{x.dhdepart}}</h6>
+          <h6 >Date et l'heure de arrivee:</h6>
+            <h6>{{x.dharrivee}}</h6>
+          <h6>Type de course :{{x.typemission}} , Bagage: {{x.bagage}}</h6>
+          <h6>Montant: {{x.estimation}} </h6>
+          <h6>Adresse de depart: {{x.local1}}</h6>
+          <h6>Adresse de arrivee: {{x.local2}}  </h6>
+          <h6>Voiture de la course:</h6>
+          <h6>  {{x.marque}} {{x.model}} {{x.immatriculation}}</h6>
+          <h6>Notes: {{x.notes}}</h6>
+          
+          <ion-item style="--background:#fef9e5">
+            <ion-label >Montant:</ion-label>
+            <ion-input type="number" [(ngModel)]="montant" placeholder="Montant"></ion-input>
+          </ion-item> 
+      <ion-button (click)="evoyer(index)"class="accepter">
+            <p><ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>Envoyer</p>
+      </ion-button> 
+      <ion-button (click)="refuser(index)" color="danger">
+        <p><ion-icon slot="icon-only" name="close-circle"></ion-icon>Refuser</p>
+  </ion-button> 
+      </ion-label>
+    </ion-item>
+  
+  </ion-list>
+
+</ion-content>

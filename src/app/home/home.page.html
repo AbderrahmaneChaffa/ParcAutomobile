@@ -1,0 +1,29 @@
+
+
+<ion-content color="light shade">
+    <br/>
+    <img src="assets/login.png"  >
+    <br/>
+
+    <ion-item class="input1">
+     <ion-input [(ngModel)]="logindata.username" placeholder="Nom d'utilisateur" type="text"></ion-input>
+    </ion-item>
+    <ion-item class="input2">
+    <ion-input  [(ngModel)]="logindata.password" placeholder="Mot de passe" type="password"></ion-input>
+    </ion-item>
+    <br/>
+    <ion-button style="--background:#24292e" class="connect"  expand="block" (click)="seConnect()">Se connecter</ion-button>
+    <br/>
+    <p  class="inscr">Nouveaux utilisateurs ? Inscrivez-vous </p>
+    <ion-grid>
+        <ion-row >
+          <ion-col >
+             <ion-button class="client" expand="block"  (click)="Inscriptionclient()">Client</ion-button>
+          </ion-col>
+          <ion-col >
+              <ion-button style="--background:#f9d342"  class="chauffeur" expand="block"  (click)="InscriptionChauffeur()">Chauffeur</ion-button> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar style="--background:#cac6e6">
+    <!--ion-icon class="missionicon" name="trail-sign" slot="start"></ion-icon-->
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <ion-title>Missions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="ajoutercourse()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<h6 style="text-align:center">Liste des missions :</h6>
+<ion-list *ngIf="missions_list.length!=0">
+  
+  <ion-item *ngFor="let x of missions_list;let index=index">
+ 
+      <ion-label>
+        <h6 >Date et l'heure de depart:</h6>
+        <h6>{{x.dhdepart}}</h6>
+      <h6 >Date et l'heure de arrivee:</h6>
+        <h6>{{x.dharrivee}}</h6>
+      <h6>Type de course :{{x.typemission}} , Bagage: {{x.bagage}}</h6>
+      <h6>Montant: {{x.montant}} </h6>
+      <h6>Adresse de depart: {{x.local1}}</h6>
+      
+      <h6>Adresse de arrivee: {{x.local2}}  </h6>
+
+      <h6>Voiture de la course: {{x.marque}} {{x.model}} {{x.immatriculation}}</h6>
+      
+      <h6>Notes: {{x.notes}}</h6>
+      <ion-button (click)="delete(index)" fill="outline" color="grey">
+          <ion-icon color="danger" slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-label>
+  </ion-item>
+
+</ion-list>
+
+</ion-content>

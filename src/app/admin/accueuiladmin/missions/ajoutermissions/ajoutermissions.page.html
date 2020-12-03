@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar style="--background:#cac6e6">
+    <!--ion-icon class="missionicon" name="trail-sign" slot="start"></ion-icon-->
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ajouter une course</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+  <ion-item class="a">
+    <ion-label>Combien de fois?</ion-label>
+    <ion-select interface="popover" [(ngModel)]="typemission" >
+      <ion-select-option value="une fois">Une fois</ion-select-option>
+      <ion-select-option value="Quotidienne">Quotidienne</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="a">
+    <ion-label>Date et l'heure de départ</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD  HH:mm"  value="null" [(ngModel)]="dhdepart"></ion-datetime>
+  </ion-item>
+  <ion-item class="a">
+    <ion-label>Date et l'heure de l'arrivée</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD  HH:mm"  value="null" [(ngModel)]="dharrivee"></ion-datetime>
+  </ion-item>
+
+  <ion-item class="a">
+    <ion-label>Bagage :</ion-label>
+    <ion-select interface="popover" [(ngModel)]="bagage" >
+      <ion-select-option value="Avec">Avec</ion-select-option>
+      <ion-select-option value="Sans">Sans</ion-select-option>
+    </ion-select>
+  </ion-item>
+    <ion-item class="a">
+      <ion-label>Montant par:</ion-label>
+      <ion-select interface="popover" [(ngModel)]="montant" >
+        <ion-select-option value="Kilometrage">Kilometrage</ion-select-option>
+        <ion-select-option value="Temps">Temps</ion-select-option>
+      </ion-select>
+  </ion-item>
+
+  <ion-item class="a">
+    <ion-input [(ngModel)]="local1" placeholder="Localisation de depart" type="text"></ion-input>
+   </ion-item >
+   <ion-item class="a">
+    <ion-input [(ngModel)]="local2" placeholder="Localisation d'arrivée" type="text"></ion-input>
+   </ion-item >
+
+
+
+   <ion-item  class="a">
+    <ion-label>Voiture:</ion-label>
+    <ion-select interface="popover"*ngIf="vehicules_list.length!=0" [(ngModel)]="voiture" >
+      <ion-select-option *ngFor="let x of vehicules_list;let index=index">
+        {{x.marque}}/{{x.model}}/{{x.immatriculation}}
+         </ion-select-option>
+    </ion-select>
+</ion-item>
+
+
+
+
+
+
+   <ion-item class="a">
+    <ion-input [(ngModel)]="notes" placeholder="Notes ..." type="text"></ion-input>
+   </ion-item >
+  
+  
+  
+      
+   <ion-button style="--background:#513862" (click)="ajoutercourse()" expand="block" color="medium">Reserver</ion-button>
+
+        
+      
+    
+</ion-content>

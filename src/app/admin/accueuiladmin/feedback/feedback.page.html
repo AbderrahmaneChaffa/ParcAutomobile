@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar style="--background:#cac6e6">
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <!--<ion-icon class="feedicon" name="chatbox-ellipses" slot="start"></ion-icon-->
+    <ion-title>Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+  <ion-segment color="primary" [(ngModel)]="yudsegment">
+    <ion-segment-button value="clients" checked>
+        Clients
+    </ion-segment-button>
+    <ion-segment-button value="chauffeurs" >
+        Chauffeurs
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="yudsegment">
+    <div  *ngSwitchCase="'clients'">
+  
+    
+  <ion-list *ngIf="feedback_client.length!=0" class="a">
+    
+    <ion-item *ngFor="let x of feedback_client;let index=index" >
+     
+        <ion-label>
+          
+            <h2>Sujet : {{x.sujet}}</h2>
+            <p>Email : {{x.email}}</p>  
+            <ion-item>
+              <ion-label class="ion-text-wrap" color="danger">
+                Message: 
+                {{x.message}} 
+              </ion-label>
+            </ion-item>
+          
+        </ion-label>
+  
+  
+        
+  
+    </ion-item>
+   
+  </ion-list>
+</div>
+<div  *ngSwitchCase="'chauffeurs'">
+  
+    
+  <ion-list *ngIf="feedback_chauffeur.length!=0" class="a">
+    
+    <ion-item *ngFor="let x of feedback_chauffeur;let index=index" >
+     
+        <ion-label>
+          
+            <h2>Sujet : {{x.sujet}}</h2>
+            <ion-item type="button">Email : {{x.email}}</ion-item>
+            <ion-item>
+              <ion-label class="ion-text-wrap" color="danger">
+                Message: 
+                {{x.message}} 
+              </ion-label>
+            </ion-item>
+            
+          
+        </ion-label>
+  
+  
+        
+  
+    </ion-item>
+   
+  </ion-list>
+</div>
+  </div>
+</ion-content>

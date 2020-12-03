@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar style="--background:#cac6e6">
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-icon class="mainicon" name="construct" slot="start"></ion-icon>-->
+    <ion-title>Maintenance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+  
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="ajouter()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+
+</ion-fab>
+<ion-list class="a">
+<ion-item slot="fixed" >
+  <h6 style="text-align:center" >Modifier une voiture :</h6>
+  <ion-label position="floating" >Effectue :</ion-label>
+  <ion-select interface="popover" [(ngModel)]="effectue" >
+    <ion-select-option value="true">Effectue</ion-select-option>
+    <ion-select-option value="false">Non</ion-select-option>
+  </ion-select>
+    <ion-label position="floating">Kilometrage</ion-label>
+    <ion-input [(ngModel)]="kilometrage"></ion-input>
+    
+    <ion-label position="floating">Notes</ion-label>
+    <ion-input [(ngModel)]="notes"></ion-input>
+
+       <div style="color:red" *ngIf="error_msg.length!=0">
+         {{error_msg}}
+           </div>
+          <div>
+              <ion-button (click)="update()" >Update</ion-button>
+<!--ion-button (click)="reset()">Reset</ion-button-->
+         </div>
+</ion-item>
+</ion-list>
+<h6 style="text-align:center">Liste des Maintenances :</h6>
+<ion-list *ngIf="reparation_list.length!=0" >
+  
+  <ion-item *ngFor="let x of reparation_list;let index=index">
+   
+      <ion-label>
+          <h2>Immatriculation : {{x.immatriculation}}</h2>
+          
+          <p>Type de Reparation : {{x.typereparation}}</p>
+          <p>Date de Reparation: {{x.date_reparation}}</p>
+          <p>N°bon: {{x.nbon}}</p>
+          <p>kilometrage: {{x.kilometrage}} Km</p>
+          <p>Montant: {{x.montant}} DA</p>
+          <p>Note: {{x.notes}}</p>
+          <p>Effectue: {{x.effectue}}</p>
+          <p>effectue par : {{x.username_rediger}}</p>
+          
+          <ion-button (click)="edit(x,index)">
+          <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="delete(index)" fill="outline" color="grey">
+          <ion-icon color="danger" slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+      </ion-label>
+
+      
+  </ion-item>
+
+</ion-list>
+</ion-content>

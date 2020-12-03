@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-toolbar style="--background:#cac6e6">
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mes Reservations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#f9f8f7">
+
+  
+  <h6 style="text-align:center" >Liste des missions :</h6>
+  <ion-list *ngIf="relations_list.length!=0">
+    
+    <ion-item *ngFor="let x of relations_list;let index=index">
+   
+        <ion-label>
+            <!--Date et l'heure de depart:</p>
+
+              <p>{{x.dhdepart}}</p>
+            <p>Date et l'heure de arrivee:</p>
+              <p>{{x.dharrivee}}</p>
+            <p>Type de course :{{x.typemission}} , Bagage: {{x.bagage}}</p>
+            <p>Montant: {{x.montant}} </p>
+            <p>Adresse de depart: {{x.local1}}</p>
+            <p>Adresse de arrivee: {{x.local2}}  </p>
+            <p>Voiture de la course: {{x.idvoiture}}</p>
+            <p>Notes: {{x.notes}}</p>
+            <p>etat: {{x.etat}}</p>-->
+
+
+            <h1>Nom de chauffeur : {{x.nom}}</h1>
+            <h5>Montant proposé : {{x.montant}} DA</h5>
+            <h6>Numero telephone : {{x.ntelephone}}</h6>
+            <h6>Voiture : {{x.marque}} {{x.model}}</h6>
+            <h6>Immatriculation : {{x.immatriculation}}</h6>
+            <h6>Adresse : {{x.local1}} vers {{x.local2}}</h6>
+            <h6>date et l'heure de depart et l'arrivée : </h6>
+            <h6>{{x.dhdepart}} / {{x.dharrivee}}</h6>
+
+
+
+
+        <ion-button (click)="accepter(index)" size="small" [disabled]="buttonaccepterDisabled">
+            <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+            Accepter
+        </ion-button>
+        <ion-button (click)="delete(index)" fill="outline" color="grey" size="small">
+            <ion-icon color="danger" slot="icon-only" name="close-circle">Supprimer</ion-icon>
+            
+        </ion-button>
+        <ion-button (click)="terminer(x,index)" size="small" [disabled]="buttonterminerDisabled">
+          <ion-icon name="send-outline" slot="icon-only" color="success"></ion-icon>
+          Terminer
+      </ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

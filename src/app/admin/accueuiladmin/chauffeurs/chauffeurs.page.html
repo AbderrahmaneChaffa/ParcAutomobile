@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar style="--background:#cac6e6">
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chauffeurs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button >
+      <ion-icon name="add" (click)="ajouter()"></ion-icon>
+    </ion-fab-button>
+
+</ion-fab>
+<h6 class="b">List des Chauffeurs : </h6>
+<ion-list *ngIf="chauffeur_list.length!=0" class="a">
+  
+  <ion-item *ngFor="let x of chauffeur_list;let index=index">
+   
+      <ion-label>
+          <h2>Nom complet  : {{x.nom}} {{x.prenom}}</h2>
+          <p>Email : {{x.email}}</p>
+          <p>Numero Telephone: 0{{x.ntelephone}}</p>
+          <p>Numero de permis: {{x.numpermis}} </p>
+          <p>Date permis: {{x.datepermis}} </p>
+          <p>Date d'inscrption: {{x.dateInscreption}} </p>
+          <p>Statut: {{x.statut}} </p>
+
+
+          <ion-button (click)="approuver(x,index)">
+                <p><ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>{{btn}}</p>
+          </ion-button>
+          <ion-button (click)="delete(index)" fill="outline" color="grey">
+                <p><ion-icon color="danger" slot="icon-only" name="close-circle"></ion-icon>Supprimer</p>
+          </ion-button>
+      </ion-label>
+
+     
+  </ion-item>
+
+</ion-list>
+  
+</ion-content>

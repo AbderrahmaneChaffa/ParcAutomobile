@@ -1,0 +1,73 @@
+<ion-toolbar style="--background:#cac6e6">
+  <ion-buttons slot="start" >
+    <ion-menu-button auto-hide="false"></ion-menu-button>
+  </ion-buttons>
+  <ion-title>Bienvenue Mr:{{nom}}</ion-title>
+</ion-toolbar>
+<ion-menu side="start" menuId="first" contentId="main">
+  
+  <ion-header>
+    <ion-toolbar style="--background:#cac6e6">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    
+    <ion-list>
+      <ion-item (click)="profil()"><ion-icon  slot="start" name="person"></ion-icon>Profil</ion-item>
+      <ion-item (click)="reserver()"><ion-icon  slot="start" name="car-sport"></ion-icon>Reserver une voiture</ion-item>
+      <ion-item (click)="mesreservations()"><ion-icon  slot="start" name="book"></ion-icon>Mes reservations</ion-item>
+      <ion-item (click)="aide()"><ion-icon  slot="start" name="help-circle"></ion-icon>Aide</ion-item>
+      <ion-item (click)="logout()"><ion-icon  slot="start" name="log-out"></ion-icon>Déconnecter</ion-item>
+      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main"></ion-router-outlet>
+
+<ion-content [fullscreen]="true" style="--background:#f9f8f7" >
+
+  <ion-card style="--background:#8597b3" (click)="mesreservations()">
+    <img src="assets/imgadmin/calendar.png" />
+    <ion-card-header style="--background:#d1d8e2" >
+      <ion-card-title>Mes reservations</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-card style="--background:#F9F6B7" (click)="reserver()">
+    <img src="assets/imgadmin/car.png" />
+    <ion-card-header style="--background:#faf8cc" >
+      <ion-card-title>Reserver une voiture</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card style="--background:#f7a9a9" (click)="feedback()">
+    <img src="assets/imgadmin/consult.png" />
+    <ion-card-header style="--background:#fbd4d4" >
+      <ion-card-title>Contacter admin</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>

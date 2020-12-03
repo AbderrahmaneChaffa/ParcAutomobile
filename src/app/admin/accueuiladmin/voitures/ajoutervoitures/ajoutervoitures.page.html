@@ -1,0 +1,63 @@
+<ion-header>
+<ion-toolbar style="--background:#cac6e6">
+  <ion-buttons slot="start">
+    <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+  </ion-buttons><!--ion-icon class="caricon" name="car" slot="end"></ion-icon-->
+  <ion-title>Ajouter des nouveaux voitures</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+  
+  <ion-item class="a">
+    <ion-label>Type :</ion-label>
+    <ion-select interface="popover" [(ngModel)]="typevoitures" >
+      <ion-select-option value="Voiture de 5 places ou moins">Voiture de 5 places ou moins</ion-select-option>
+      <ion-select-option value="Les Voitures monospace ">Les Voitures monospace </ion-select-option>
+      <ion-select-option value="les utilitaires et fourgonnettes">les utilitaires et fourgonnettes</ion-select-option>
+      <ion-select-option value="Moto de Livraison ">Moto de Livraison </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="a">
+    <ion-input [(ngModel)]="marque" placeholder="Marque" type="text"></ion-input>
+   </ion-item>
+   <ion-item class="a">
+    <ion-input [(ngModel)]="model" placeholder="Model" type="text"></ion-input>
+   </ion-item>
+   <ion-item class="a">
+    <ion-input [(ngModel)]="nchassis" placeholder="N° Chassis (VIN)" type="text"></ion-input>
+   </ion-item>
+   <ion-item class="a">
+    <ion-input [(ngModel)]="immatriculation" placeholder="N° Immatriculation" type="text"></ion-input>
+   </ion-item>
+
+   <ion-item class="a">
+    <ion-label>Carburant :</ion-label>
+    <ion-select interface="popover" [(ngModel)]="carburant" >
+      <ion-select-option value="Essence">Essence</ion-select-option>
+      <ion-select-option value="Diesel">Diesel</ion-select-option>
+      <ion-select-option value="Electrique">Electrique</ion-select-option>
+      <ion-select-option value="GBL">GBL</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+   <ion-item class="a">
+    <ion-input [(ngModel)]="nplace" placeholder="Nombre de Place" type="text"></ion-input>
+   </ion-item >
+   <ion-item class="a">
+    <ion-input [(ngModel)]="couleur" placeholder="Couleur" type="text"></ion-input>
+   </ion-item>
+   <ion-item class="a">
+    <ion-input [(ngModel)]="kilometrage" placeholder="Kilometrage" type="text"></ion-input>
+   </ion-item>
+   <ion-item class="a">
+    <ion-input [(ngModel)]="chauffeur" placeholder="Chauffeur" type="text"></ion-input>
+   </ion-item>
+   
+   
+      
+         <ion-button style="--background:#513862" (click)="ajoutervoitures()" expand="block" color="medium">ajouter</ion-button>
+      
+      
+
+</ion-content>

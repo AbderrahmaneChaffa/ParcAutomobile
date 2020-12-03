@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar style="--background:#f9d342">
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-icon class="mainicon" name="construct" slot="start"></ion-icon>-->
+    <ion-title>Ajouter une reparation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#fef9e5">
+  <ion-item class="a">
+    <ion-label (click)="choisirVoiture()">Choisir une Voiture: {{model}} {{marque}}</ion-label>
+  </ion-item>
+  <div *ngIf="varShowVoiture==true">
+    <ion-card *ngFor="let x of vehicules_list;let index=index" style="--background:#aad8f4" (click)="selectionnerVoiture(x,index)" >
+      <ion-card-header>
+        <ion-card-title>Model: {{x.model}} </ion-card-title>
+        <ion-card-subtitle>Marque: {{x.marque}} </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>immatriculation: {{x.immatriculation}}</ion-card-content>
+    </ion-card>
+  </div>
+  
+
+  <ion-item class="a">
+    <ion-label>Type de reparation</ion-label>
+    <ion-select interface="popover" [(ngModel)]="typereparation" >
+      <ion-select-option value="Changement de pieces">Changement de pieces</ion-select-option>
+      <ion-select-option value="Reparation">Reparation</ion-select-option>
+      <ion-select-option value="Entretien">Entretien</ion-select-option>
+      <ion-select-option value="Autres">Autres</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="a">
+    <ion-label position="floating" >Date</ion-label>
+    <ion-datetime [(ngModel)]="date_reparation" displayFormat="MM/DD/YYYY" type="Date" ></ion-datetime>
+  </ion-item>
+
+  <ion-item style="--background:#fff" class="a">
+    <ion-input [(ngModel)]="nbon" placeholder="N°Bon" type="text"></ion-input>
+    </ion-item>
+
+<ion-item style="--background:#fff" class="a">
+  <ion-input [(ngModel)]="kilometrage" placeholder="Kilometrage Actuel" type="text"></ion-input>
+  </ion-item>
+
+<ion-item style="--background:#fff" class="a">
+  <ion-input [(ngModel)]="montant" placeholder="Montant" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item style="--background:#fff; --padding-bottom:60px" spellcheck="true" class="a">
+    <ion-input [(ngModel)]="notes" placeholder="Notes" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="a">
+      <ion-label>Effectué</ion-label>
+      <ion-toggle [(ngModel)]="effectue" color="success"></ion-toggle>
+    </ion-item>
+
+    
+    <ion-button style="--background:#513862" expand="block" (click)="add()">Ajouter</ion-button>
+
+    
+</ion-content>

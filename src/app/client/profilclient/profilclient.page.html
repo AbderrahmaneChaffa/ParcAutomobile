@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-toolbar style="--background:#cac6e6">
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+
+  <ion-item style="--background:#fff">
+    <ion-icon name="person-outline" slot="start"></ion-icon>
+    <ion-input [(ngModel)]="nom" placeholder="Nom" type="name"></ion-input>
+    <ion-input [(ngModel)]="prenom" placeholder="Prenom" type="name"></ion-input>
+   
+  </ion-item>
+  <ion-item style="--background:#fff">
+    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-input [(ngModel)]="username" placeholder="Username" type="name"></ion-input>
+</ion-item>
+   <ion-item style="--background:#fff">
+    <ion-icon name="call-outline" slot="start"></ion-icon>
+    <ion-input [(ngModel)]="ntelephone" placeholder="Numero telephone" type="tel" mnlength="10"></ion-input>
+   </ion-item>
+
+   <ion-item style="--background:#fff">
+    <ion-icon name="lock-closed" slot="start"></ion-icon>
+    <ion-input [(ngModel)]="password" placeholder="Mot de passe" type="password"></ion-input>
+    <ion-input [(ngModel)]="newpassword" placeholder="Nouveau mot de passe" type="password"></ion-input>
+    </ion-item>
+
+  <ion-button expand="block"  (click)="sauvegarder()" style="--background:#7ccd7c" >sauvegarder</ion-button>
+ 
+  <ion-button expand="block"  (click)="supprimercompte()" style="--background:#ff4d4d">Supprimer mon compte</ion-button>
+</ion-content>

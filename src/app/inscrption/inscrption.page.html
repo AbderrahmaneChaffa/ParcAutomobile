@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-toolbar style="--background:#85b1ff">
+    <ion-buttons slot="start">
+      <ion-back-button><ion-icon name="arrow-back-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inscrire</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content style="--background:#edecf6">
+  <ion-item class="a">
+    <ion-input [(ngModel)]="nom" placeholder="Nom" type="nom"></ion-input>
+   </ion-item>
+   
+   <ion-item class="a">
+    <ion-input [(ngModel)]="prenom" placeholder="Prenom" type="prenom"></ion-input>
+   </ion-item>
+   
+  <ion-item class="a">
+    <ion-input [(ngModel)]="email" placeholder="Email" type="email"></ion-input>
+   </ion-item>
+   <ion-item class="a">
+    <ion-input [(ngModel)]="ntelephone" placeholder="Numero telephone" type="tel" mnlength="10"></ion-input>
+   </ion-item>
+   <ion-item class="a">
+    <ion-input [(ngModel)]="username" placeholder="Nom d'utilisateur" type="text" ></ion-input>
+   </ion-item>
+   
+   <ion-item class="a">
+   <ion-input [(ngModel)]="password" placeholder="Password" type="password" ></ion-input>
+   </ion-item>
+   
+   <ion-item class="a">
+    <ion-input [(ngModel)]="passwordConf" placeholder="Confirmer password" type="password"></ion-input>
+    </ion-item>
+    
+   <ion-button expand="block" (click)="inscrire()">inscrire</ion-button>
+   
+   
+</ion-content>
